@@ -155,6 +155,7 @@ namespace TeamRocketProxy.Interception
             foreach (TreeNode childNode in node.Nodes)
             {
                 messageExplorerTreeView.Nodes.Add(childNode);
+                childNode.Expand();
             }
 
             RecursiveExpandNodes(node, threshold: 15);

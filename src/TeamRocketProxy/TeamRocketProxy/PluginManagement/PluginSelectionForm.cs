@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using TeamRocketProxy.Integration;
 using TeamRocketProxy.Interception;
-using System.Drawing;
 
 namespace TeamRocketProxy
 {

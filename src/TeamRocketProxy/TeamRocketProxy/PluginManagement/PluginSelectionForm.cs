@@ -14,7 +14,7 @@ namespace TeamRocketProxy
         {
             InitializeComponent();
         }
-        
+
         public void SetPlugins(IEnumerable<IRocketPlugin> plugins)
         {
             pluginListView.Items.Clear();
@@ -22,7 +22,7 @@ namespace TeamRocketProxy
 
             var imageIndex = 0;
 
-            foreach(var plugin in plugins)
+            foreach (var plugin in plugins)
             {
                 var item = new ListViewItem();
                 var descriptor = plugin.GetDescriptor();

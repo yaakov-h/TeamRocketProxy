@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Fiddler;
@@ -13,8 +14,15 @@ namespace TeamRocketProxy.Interception.Http
         {
             FiddlerApplication.BeforeResponse += OnFiddlerResponseReceived;
             FiddlerApplication.AfterSessionComplete += OnFiddlerSessionComplete;
-        }
+            FiddlerApplication.oTranscoders.ImportTranscoders("BasicFormatsForCore.dll");
+            FiddlerApplication.Prefs.SetInt32Pref("fiddler.importexport.HTTPArchiveJSON.MaxTextBodyLength", OneHundredMBInBytes);
 
+            sessions = new List<Session>();
+        }
+        
+        const int OneHundredMBInBytes = 1024 * 1024 * 100;
+        readonly object sessionsLock = new object();
+        readonly List<Session> sessions;
         HttpProxyConfiguration configuration;
 
         #region IHttpProxy
@@ -52,6 +60,36 @@ namespace TeamRocketProxy.Interception.Http
             FiddlerApplication.Shutdown();
         }
 
+        public void Load(string path)
+        {
+            var options = new Dictionary<string, object>
+            {
+                ["Filename"] = path
+            };
+            var sessions = FiddlerApplication.DoImport("HTTPArchive v1.2", false, options, null);
+
+            foreach(var session in sessions)
+            {
+                OnFiddlerSessionComplete(session);
+            }
+        }
+
+        public void Save(string path)
+        {
+            Session[] sessionsToSave;
+
+            lock (sessionsLock)
+            {
+                sessionsToSave = sessions.ToArray();
+            }
+
+            var options = new Dictionary<string, object>
+            {
+                ["Filename"] = path
+            };
+            FiddlerApplication.DoExport("HTTPArchive v1.2", sessionsToSave, options, null);
+        }
+
         #endregion
 
         #region Fiddler Events
@@ -70,6 +108,11 @@ namespace TeamRocketProxy.Interception.Http
             if (!configuration.HostsToIntercept.Any(host => oSession.HostnameIs(host)))
             {
                 return;
+            }
+
+            lock (sessionsLock)
+            {
+                sessions.Add(oSession);
             }
 
             var session = new FiddlerHttpSession(oSession);

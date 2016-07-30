@@ -8,5 +8,8 @@ namespace TeamRocketProxy.Integration.Http
         void Stop();
 
         event EventHandler<HttpSessionCompleteEventArgs> OnSessionComplete;
+
+        void Load(string path);
+        void Save(string path);
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="PluginCapabilities.cs" />
     <Compile Include="PluginDescriptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RocketPluginExtensions.cs" />
     <Compile Include="ServiceProviderExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,5 +10,8 @@ namespace TeamRocketProxy.Integration
 
         IEnumerable<IInterceptedMessage> GetMessages();
         event EventHandler<MessageInterceptionEventArgs> OnNewMessageIntercepted;
+
+        void Save(string path);
+        void Load(string path);
     }
 }

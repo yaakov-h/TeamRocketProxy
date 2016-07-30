@@ -72,5 +72,15 @@ namespace TeamRocketProxy.Test.StubPlugins
         {
             timer?.Dispose();
         }
+
+        public void Save(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Load(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace PokemonGo
     public sealed class PokemonGoPlugin : IRocketPlugin
     {
         public PluginCapabilities Capabilities
-            => PluginCapabilities.SupportsLiveCapture;
+            => PluginCapabilities.SupportsLiveCapture | PluginCapabilities.SupportsSessionPersistence;
         
         public PluginDescriptor GetDescriptor()
             => new PluginDescriptor("Pokemon Go", "MITM proxy for Pokemon Go", Resources.Icon);

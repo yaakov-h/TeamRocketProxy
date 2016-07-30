@@ -15,22 +15,42 @@ namespace TeamRocketProxy.Interception
 
         IRocketPlugin plugin;
         IInterceptionContext context;
+        volatile bool dirty;
 
         public void SetPlugin(IRocketPlugin plugin)
         {
-            DestroyContext();
 
             this.plugin = plugin;
+
+            var supportsPersistence = plugin.HasCapabilities(PluginCapabilities.SupportsSessionPersistence);
+            openToolStripMenuItem.Enabled = supportsPersistence;
+            saveToolStripMenuItem.Enabled = supportsPersistence;
+
+            LoadNewContext();
+            context.Initialize(); // TODO: Clean up for live capture flags
+        }
+
+        void LoadNewContext()
+        {
+            DestroyContext();
             context = plugin.GetInterceptionContext(new InterceptionServiceProvider());
             context.OnNewMessageIntercepted += OnNewMessageIntercepted;
-            context.Initialize();
         }
 
         void OnExitMenuItemClicked(object sender, EventArgs e)
             => Close();
-        
+
         void OnNewMessageIntercepted(object sender, MessageInterceptionEventArgs e)
-            => this.BeginInvoke(RepopulateListBox);
+        {
+            dirty = true;
+            this.BeginInvoke(() =>
+            {
+                if (this.dirty)
+                {
+                    RepopulateListBox();
+                }
+            });
+        }
 
         #region Filter Options
 
@@ -110,6 +130,8 @@ namespace TeamRocketProxy.Interception
 
         void RepopulateListBox()
         {
+            dirty = false;
+
             var filterOptions = new FilterOptions(GetFilterMessageDirection(), GetFilterUserText());
             context.SetFilterOptions(filterOptions);
 
@@ -234,5 +256,29 @@ namespace TeamRocketProxy.Interception
 
         void OnFormClosed(object sender, FormClosedEventArgs e)
             => Application.Exit();
+
+        void OnOpenMenuItemClicked(object sender, EventArgs e)
+        {
+            var openDialog = new OpenFileDialog();
+            openDialog.Multiselect = false;
+
+            var result = openDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadNewContext();
+                context.Load(openDialog.FileName);
+            }
+
+        }
+
+        void OnSaveMenuItemClicked(object sender, EventArgs e)
+        {
+            var saveDialog = new SaveFileDialog();
+            var result = saveDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                context.Save(saveDialog.FileName);
+            }
+        }
     }
 }

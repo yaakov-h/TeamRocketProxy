@@ -44,6 +44,8 @@
             this.filterDirectionInRadioButton = new System.Windows.Forms.RadioButton();
             this.filterDirectionAnyRadioButton = new System.Windows.Forms.RadioButton();
             this.messageExplorerTreeView = new System.Windows.Forms.TreeView();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +73,8 @@
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
             exitToolStripMenuItem});
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -79,7 +83,7 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitMenuItemClicked);
             // 
@@ -224,6 +228,20 @@
             this.messageExplorerTreeView.Size = new System.Drawing.Size(584, 422);
             this.messageExplorerTreeView.TabIndex = 0;
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenMenuItemClicked);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save...";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSaveMenuItemClicked);
+            // 
             // InterceptionSessionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +279,7 @@
         private System.Windows.Forms.TextBox filterUserTextTextBox;
         private System.Windows.Forms.ColumnHeader messageIDColumn;
         private System.Windows.Forms.TreeView messageExplorerTreeView;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }

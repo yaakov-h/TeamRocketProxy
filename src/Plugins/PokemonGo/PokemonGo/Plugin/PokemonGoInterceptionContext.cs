@@ -174,5 +174,11 @@ namespace PokemonGo
             messageType = null;
             return false;
         }
+
+        public void Save(string path)
+            => proxy.Save(path);
+
+        public void Load(string path)
+            => proxy.Load(path);
     }
 }

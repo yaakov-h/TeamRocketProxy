@@ -8,5 +8,7 @@ namespace TeamRocketProxy.Integration
         PluginCapabilities Capabilities { get; }
 
         IInterceptionContext GetInterceptionContext(IServiceProvider serviceProvider);
+
+        void Describe(IMessageExplorer explorer, IInterceptedMessage message);
     }
 }

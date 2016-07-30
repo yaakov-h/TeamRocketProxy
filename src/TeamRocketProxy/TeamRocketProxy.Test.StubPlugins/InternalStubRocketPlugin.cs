@@ -12,5 +12,9 @@ namespace TeamRocketProxy.Test.StubPlugins
 
         public IInterceptionContext GetInterceptionContext(IServiceProvider serviceProvider)
             => null;
+
+        public void Describe(IMessageExplorer explorer, IInterceptedMessage message)
+        {
+        }
     }
 }

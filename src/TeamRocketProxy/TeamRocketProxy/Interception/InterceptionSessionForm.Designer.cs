@@ -43,6 +43,7 @@
             this.directionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.messageNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.itemNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.messageExplorerTreeView = new System.Windows.Forms.TreeView();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,7 @@
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(splitContainer)).BeginInit();
             splitContainer.Panel1.SuspendLayout();
+            splitContainer.Panel2.SuspendLayout();
             splitContainer.SuspendLayout();
             filterOptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +93,10 @@
             // 
             splitContainer.Panel1.Controls.Add(this.messagesListView);
             splitContainer.Panel1.Controls.Add(filterOptionsGroupBox);
+            // 
+            // splitContainer.Panel2
+            // 
+            splitContainer.Panel2.Controls.Add(this.messageExplorerTreeView);
             splitContainer.Size = new System.Drawing.Size(904, 437);
             splitContainer.SplitterDistance = 301;
             splitContainer.TabIndex = 1;
@@ -187,6 +193,7 @@
             this.messagesListView.TabIndex = 1;
             this.messagesListView.UseCompatibleStateImageBehavior = false;
             this.messagesListView.View = System.Windows.Forms.View.Details;
+            this.messagesListView.SelectedIndexChanged += new System.EventHandler(this.OnMessagesListViewSelectedIndexChanged);
             // 
             // messageIDColumn
             // 
@@ -207,6 +214,13 @@
             // 
             this.itemNameColumnHeader.Width = 0;
             // 
+            // messageExplorerTreeView
+            // 
+            this.messageExplorerTreeView.Location = new System.Drawing.Point(3, 3);
+            this.messageExplorerTreeView.Name = "messageExplorerTreeView";
+            this.messageExplorerTreeView.Size = new System.Drawing.Size(584, 422);
+            this.messageExplorerTreeView.TabIndex = 0;
+            // 
             // InterceptionSessionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +236,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             splitContainer.Panel1.ResumeLayout(false);
+            splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(splitContainer)).EndInit();
             splitContainer.ResumeLayout(false);
             filterOptionsGroupBox.ResumeLayout(false);
@@ -242,5 +257,6 @@
         private System.Windows.Forms.ColumnHeader messageNameColumnHeader;
         private System.Windows.Forms.TextBox filterUserTextTextBox;
         private System.Windows.Forms.ColumnHeader messageIDColumn;
+        private System.Windows.Forms.TreeView messageExplorerTreeView;
     }
 }

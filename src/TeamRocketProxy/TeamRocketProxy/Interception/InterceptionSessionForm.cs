@@ -127,6 +127,58 @@ namespace TeamRocketProxy.Interception
             }
         }
 
+        #region Messages List View Selection
+
+        ListViewItem selectedListViewItem;
+
+        void OnMessagesListViewSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (messagesListView.SelectedItems.Count != 1)
+            {
+                return;
+            }
+
+            var selectedItem = messagesListView.SelectedItems[0];
+            if (selectedItem != selectedListViewItem)
+            {
+                selectedListViewItem = selectedItem;
+                RepopulateTreeView(selectedItem);
+            }
+        }
+
+        void RepopulateTreeView(ListViewItem listViewItem)
+        {
+            var message = (IInterceptedMessage)listViewItem.Tag;
+            var node = new TreeNode();
+            var explorer = new TreeViewMessageExplorer(node);
+
+            plugin.Describe(explorer, message);
+
+            messageExplorerTreeView.Nodes.Clear();
+
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                messageExplorerTreeView.Nodes.Add(childNode);
+            }
+
+            RecursiveExpandNodes(node, threshold: 15);
+        }
+
+        static void RecursiveExpandNodes(TreeNode node, int threshold)
+        {
+            if (node.Nodes.Count <= threshold)
+            {
+                node.Expand();
+            }
+
+            foreach (TreeNode child in node.Nodes)
+            {
+                RecursiveExpandNodes(child, threshold);
+            }
+        }
+
+        #endregion
+
         static ListViewItem MakeListViewItem(IInterceptedMessage message)
         {
             var item = new ListViewItem(message.MessageType);

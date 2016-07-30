@@ -39,14 +39,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pluginListView.Location = new System.Drawing.Point(13, 13);
             this.pluginListView.Name = "pluginListView";
-            this.pluginListView.Size = new System.Drawing.Size(259, 207);
+            this.pluginListView.Size = new System.Drawing.Size(259, 107);
             this.pluginListView.TabIndex = 0;
             this.pluginListView.UseCompatibleStateImageBehavior = false;
             // 
             // startButton
             // 
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startButton.Location = new System.Drawing.Point(171, 226);
+            this.startButton.Location = new System.Drawing.Point(171, 126);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(101, 23);
             this.startButton.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 161);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.pluginListView);
             this.Name = "PluginSelectionForm";

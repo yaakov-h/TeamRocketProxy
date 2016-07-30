@@ -49,6 +49,7 @@
     <Compile Include="FilterOptions.cs" />
     <Compile Include="IInterceptedMessage.cs" />
     <Compile Include="IInterceptionContext.cs" />
+    <Compile Include="IMessageExplorer.cs" />
     <Compile Include="IRocketPlugin.cs" />
     <Compile Include="MessageDirection.cs" />
     <Compile Include="MessageInterceptionEventArgs.cs" />

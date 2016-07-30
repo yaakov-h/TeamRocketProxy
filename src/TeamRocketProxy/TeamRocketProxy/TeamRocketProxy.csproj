@@ -61,6 +61,7 @@
     <Compile Include="Interception\InterceptionSessionForm.Designer.cs">
       <DependentUpon>InterceptionSessionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interception\TreeViewMessageExplorer.cs" />
     <Compile Include="PluginManagement\PluginReader.cs" />
     <Compile Include="PluginManagement\PluginSelectionForm.cs">
       <SubType>Form</SubType>

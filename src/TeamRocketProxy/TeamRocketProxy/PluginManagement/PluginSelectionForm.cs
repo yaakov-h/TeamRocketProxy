@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using TeamRocketProxy.Integration;
+using TeamRocketProxy.Interception;
 
 namespace TeamRocketProxy
 {
@@ -39,7 +41,18 @@ namespace TeamRocketProxy
 
         void OnStartButtonClicked(object sender, EventArgs e)
         {
-
+            var plugin = pluginListView.SelectedItems.Cast<ListViewItem>().FirstOrDefault()?.Tag as IRocketPlugin;
+            if (plugin == null)
+            {
+                MessageBox.Show(this, "Please select a plugin.", "No Plugin Selected.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var interceptionForm = new InterceptionSessionForm();
+                interceptionForm.SetPlugin(plugin);
+                interceptionForm.Show();
+                Close();
+            }
         }
     }
 }

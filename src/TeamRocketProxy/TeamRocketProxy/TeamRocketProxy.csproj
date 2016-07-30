@@ -53,6 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormExtensions.cs" />
+    <Compile Include="Interception\InterceptionServiceProvider.cs" />
+    <Compile Include="Interception\InterceptionSessionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interception\InterceptionSessionForm.Designer.cs">
+      <DependentUpon>InterceptionSessionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PluginManagement\PluginReader.cs" />
     <Compile Include="PluginManagement\PluginSelectionForm.cs">
       <SubType>Form</SubType>
@@ -62,6 +70,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Interception\InterceptionSessionForm.resx">
+      <DependentUpon>InterceptionSessionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PluginManagement\PluginSelectionForm.resx">
       <DependentUpon>PluginSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,9 +105,7 @@
       <Name>TeamRocketProxy.Integration</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interception\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

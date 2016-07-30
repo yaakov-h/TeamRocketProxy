@@ -19,6 +19,7 @@ namespace TeamRocketProxy.Test.StubPlugins
             timer.Start();
         }
 
+        readonly object messagesLock = new object();
         readonly List<IInterceptedMessage> messages;
         readonly Timer timer;
         FilterOptions currentFilterOptions;
@@ -33,18 +34,21 @@ namespace TeamRocketProxy.Test.StubPlugins
 
         public IEnumerable<IInterceptedMessage> GetMessages()
         {
-            IEnumerable<IInterceptedMessage> filteredMessages = this.messages;
-            if (currentFilterOptions != null)
+            lock (messagesLock)
             {
-                filteredMessages = filteredMessages.Where(m => (m.Direction & currentFilterOptions.Direction) != 0);
-
-                if (!string.IsNullOrEmpty(currentFilterOptions.UserFilterText))
+                IEnumerable<IInterceptedMessage> filteredMessages = this.messages;
+                if (currentFilterOptions != null)
                 {
-                    filteredMessages = filteredMessages.Where(m => m.MessageType.IndexOf(currentFilterOptions.UserFilterText, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-            }
+                    filteredMessages = filteredMessages.Where(m => (m.Direction & currentFilterOptions.Direction) != 0);
 
-            return filteredMessages;
+                    if (!string.IsNullOrEmpty(currentFilterOptions.UserFilterText))
+                    {
+                        filteredMessages = filteredMessages.Where(m => m.MessageType.IndexOf(currentFilterOptions.UserFilterText, StringComparison.OrdinalIgnoreCase) >= 0);
+                    }
+                }
+
+                return filteredMessages.ToList();
+            }
         }
 
         void OnTimerElapsed(object sender, ElapsedEventArgs e)
@@ -53,7 +57,10 @@ namespace TeamRocketProxy.Test.StubPlugins
             var direction = (messageID % 2 == 0) ? MessageDirection.Outbound : MessageDirection.Inbound;
 
             var message = new StubInterceptedMessage(messageID, direction, $"StubMessage{direction:G}");
-            messages.Add(message);
+            lock (messagesLock)
+            {
+                messages.Add(message);
+            }
             OnNewMessageIntercepted?.Invoke(this, new MessageInterceptionEventArgs(message));
         }
 

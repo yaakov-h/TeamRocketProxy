@@ -29,8 +29,9 @@ namespace TeamRocketProxy
 
             var form = new PluginSelectionForm();
             form.SetPlugins(plugins);
+            form.Show();
 
-            Application.Run(form);
+            Application.Run();
             return 0;
         }
     }

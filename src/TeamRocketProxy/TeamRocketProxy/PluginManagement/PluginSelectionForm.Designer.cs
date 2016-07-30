@@ -38,6 +38,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pluginListView.Location = new System.Drawing.Point(13, 13);
+            this.pluginListView.MultiSelect = false;
             this.pluginListView.Name = "pluginListView";
             this.pluginListView.Size = new System.Drawing.Size(259, 107);
             this.pluginListView.TabIndex = 0;

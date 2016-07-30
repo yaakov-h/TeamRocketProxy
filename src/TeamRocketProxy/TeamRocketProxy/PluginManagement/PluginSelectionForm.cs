@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using TeamRocketProxy.Integration;
 using TeamRocketProxy.Interception;
+using System.Drawing;
 
 namespace TeamRocketProxy
 {
@@ -17,6 +18,9 @@ namespace TeamRocketProxy
         public void SetPlugins(IEnumerable<IRocketPlugin> plugins)
         {
             pluginListView.Items.Clear();
+            pluginListView.LargeImageList = new ImageList { ImageSize = new Size(64, 64) };
+
+            var imageIndex = 0;
 
             foreach(var plugin in plugins)
             {
@@ -28,8 +32,9 @@ namespace TeamRocketProxy
 
                 if (descriptor.Icon != null)
                 {
-                    item.ImageList.Images.Add(descriptor.Icon);
-                    item.ImageIndex = 0;
+                    pluginListView.LargeImageList.Images.Add(descriptor.Icon);
+                    item.ImageIndex = imageIndex;
+                    imageIndex++;
                 }
 
                 item.Tag = plugin;

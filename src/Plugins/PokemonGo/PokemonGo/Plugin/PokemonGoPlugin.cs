@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using Google.Protobuf;
 using Google.Protobuf.Reflection;
+using PokemonGo.Properties;
 using TeamRocketProxy.Integration;
 using TeamRocketProxy.Integration.Http;
 
@@ -15,9 +17,8 @@ namespace PokemonGo
             => PluginCapabilities.SupportsLiveCapture;
         
         public PluginDescriptor GetDescriptor()
-            => new PluginDescriptor("Pokemon Go", "MITM proxy for Pokemon Go");
-            
-
+            => new PluginDescriptor("Pokemon Go", "MITM proxy for Pokemon Go", Resources.Icon);
+        
         public IInterceptionContext GetInterceptionContext(IServiceProvider serviceProvider)
         {
             var proxy = serviceProvider.GetService<IHttpProxy>();

@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,11 @@
     <Compile Include="Plugin\PokemonGoPlugin.cs" />
     <Compile Include="Plugin\InterceptedMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Protobufs\POGOProtos\Data\AssetDigestEntry.cs" />
     <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleAction.cs" />
     <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleActionType.cs" />
@@ -277,7 +283,15 @@
     <Compile Include="Protobufs\POGOProtos\Settings\Master\Pokemon\StatsAttributes.cs" />
     <Compile Include="Protobufs\POGOProtos\Settings\Master\TypeEffectiveSettings.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

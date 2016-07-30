@@ -63,26 +63,42 @@ namespace TeamRocketProxy.PluginManagement
             return plugins;
         }
 
+        [ThreadStatic]
+        static bool assemblyResolveReentrant = false;
+
         static Type GetReflectionOnlyTypeFromType(Type type)
             => Assembly.ReflectionOnlyLoad(type.Assembly.FullName).GetType(type.FullName);
 
         static Assembly OnAppDomainAssemblyResolve(object sender, ResolveEventArgs args)
         {
+            if (assemblyResolveReentrant)
+            {
+                return null;
+            }
+
+            assemblyResolveReentrant = true;
             try
             {
-                return Assembly.Load(args.Name);
+                try
+                {
+                    return Assembly.Load(args.Name);
+                }
+                catch (FileNotFoundException)
+                {
+                    return null;
+                }
+                catch (FileLoadException)
+                {
+                    return null;
+                }
+                catch (BadImageFormatException)
+                {
+                    return null;
+                }
             }
-            catch (FileNotFoundException)
+            finally
             {
-                return null;
-            }
-            catch (FileLoadException)
-            {
-                return null;
-            }
-            catch (BadImageFormatException)
-            {
-                return null;
+                assemblyResolveReentrant = false;
             }
         }
 

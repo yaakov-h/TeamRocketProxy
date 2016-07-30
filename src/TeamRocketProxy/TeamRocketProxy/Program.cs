@@ -1,22 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeamRocketProxy.PluginManagement;
 
 namespace TeamRocketProxy
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
-        static void Main()
+        static int Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var reader = new PluginReader("Plugins");
+            var plugins = reader.LoadPlugins();
+
+            if (!plugins.Any())
+            {
+                MessageBox.Show(
+                    "No plugins could be found. Please check that plugins are correctly installed in the Plugins directory.",
+                    "Team Rocket Proxy",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return -1;
+            }
+
+            var form = new PluginSelectionForm();
+            form.SetPlugins(plugins);
+
+            Application.Run(form);
+            return 0;
         }
     }
 }

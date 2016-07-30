@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamRocketProxy.Integration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamRocketProxy.Test", "TeamRocketProxy.Test\TeamRocketProxy.Test.csproj", "{8C486688-B574-4CA0-8F49-F6A15E95F765}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamRocketProxy.Test.StubPlugins", "TeamRocketProxy.Test.StubPlugins\TeamRocketProxy.Test.StubPlugins.csproj", "{3E5C80D2-91EB-4989-A33F-200FF6943E23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{8C486688-B574-4CA0-8F49-F6A15E95F765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8C486688-B574-4CA0-8F49-F6A15E95F765}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C486688-B574-4CA0-8F49-F6A15E95F765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5C80D2-91EB-4989-A33F-200FF6943E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E5C80D2-91EB-4989-A33F-200FF6943E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E5C80D2-91EB-4989-A33F-200FF6943E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5C80D2-91EB-4989-A33F-200FF6943E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

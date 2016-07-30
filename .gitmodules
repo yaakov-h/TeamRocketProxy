@@ -1,0 +1,3 @@
+[submodule "protos/PokemonGo"]
+	path = protos/PokemonGo
+	url = https://github.com/AeonLucid/POGOProtos

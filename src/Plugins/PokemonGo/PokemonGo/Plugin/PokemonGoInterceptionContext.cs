@@ -40,18 +40,21 @@ namespace PokemonGo
 
         public IEnumerable<IInterceptedMessage> GetMessages()
         {
-            IEnumerable<IInterceptedMessage> filteredMessages = this.messages;
-            if (currentFilterOptions != null)
+            lock (messagesLock)
             {
-                filteredMessages = filteredMessages.Where(m => (m.Direction & currentFilterOptions.Direction) != 0);
-
-                if (!string.IsNullOrEmpty(currentFilterOptions.UserFilterText))
+                IEnumerable<IInterceptedMessage> filteredMessages = this.messages;
+                if (currentFilterOptions != null)
                 {
-                    filteredMessages = filteredMessages.Where(m => m.MessageType.IndexOf(currentFilterOptions.UserFilterText, StringComparison.OrdinalIgnoreCase) >= 0);
-                }
-            }
+                    filteredMessages = filteredMessages.Where(m => (m.Direction & currentFilterOptions.Direction) != 0);
 
-            return filteredMessages.ToList();
+                    if (!string.IsNullOrEmpty(currentFilterOptions.UserFilterText))
+                    {
+                        filteredMessages = filteredMessages.Where(m => m.MessageType.IndexOf(currentFilterOptions.UserFilterText, StringComparison.OrdinalIgnoreCase) >= 0);
+                    }
+                }
+
+                return filteredMessages.ToList();
+            }
         }
 
         public void SetFilterOptions(FilterOptions options)
@@ -100,8 +103,14 @@ namespace PokemonGo
         }
 
         void NotifyInterceptedMessage(IInterceptedMessage message)
-            => OnNewMessageIntercepted?.Invoke(this, new MessageInterceptionEventArgs(message));
-
+        {
+            lock (messagesLock)
+            {
+                messages.Add(message);
+            }
+            OnNewMessageIntercepted?.Invoke(this, new MessageInterceptionEventArgs(message));
+        }
+        
         public void Dispose()
             => proxy?.Stop();
 

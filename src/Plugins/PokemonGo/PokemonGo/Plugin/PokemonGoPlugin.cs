@@ -52,11 +52,10 @@ namespace PokemonGo
             {
                 if (field.FieldType == FieldType.Message && field.IsRepeated)
                 {
-                    var messageListExplorer = explorer.AddChildObject(field.Name);
-
                     var values = ((IEnumerable)field.Accessor.GetValue(message)).Cast<IMessage>().ToArray();
                     for (int i = 0; i < values.Length; i++)
                     {
+                        var messageListExplorer = explorer.AddChildObject(field.Name);
                         DescribeMessageRecursive(messageListExplorer, values[i]);
                     }
                 }

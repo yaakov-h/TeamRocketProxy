@@ -1,4 +1,5 @@
-﻿using TeamRocketProxy.Integration;
+﻿using System;
+using TeamRocketProxy.Integration;
 
 namespace TeamRocketProxy.Test.StubPlugins
 {
@@ -6,5 +7,10 @@ namespace TeamRocketProxy.Test.StubPlugins
     {
         public PluginDescriptor GetDescriptor()
             => new PluginDescriptor("Stub", "A basic mockup used for testing.");
+
+        public PluginCapabilities Capabilities => PluginCapabilities.SupportsLiveCapture;
+
+        public IInterceptionContext GetInterceptionContext(IServiceProvider serviceProvider)
+            => new StubInterceptionContext();
     }
 }

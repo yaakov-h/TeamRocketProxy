@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InternalStubRocketPlugin.cs" />
+    <Compile Include="StubInterceptedMessage.cs" />
+    <Compile Include="StubInterceptionContext.cs" />
     <Compile Include="StubRocketPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

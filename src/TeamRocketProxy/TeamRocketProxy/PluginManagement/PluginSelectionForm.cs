@@ -22,6 +22,7 @@ namespace TeamRocketProxy
                 var descriptor = plugin.GetDescriptor();
 
                 item.Name = descriptor.Name;
+                item.Text = descriptor.Name;
 
                 if (descriptor.Icon != null)
                 {

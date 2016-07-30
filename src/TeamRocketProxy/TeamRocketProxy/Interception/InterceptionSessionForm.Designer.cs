@@ -196,7 +196,6 @@
             // directionColumnHeader
             // 
             this.directionColumnHeader.Text = "Direction";
-            this.directionColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.directionColumnHeader.Width = 54;
             // 
             // messageNameColumnHeader

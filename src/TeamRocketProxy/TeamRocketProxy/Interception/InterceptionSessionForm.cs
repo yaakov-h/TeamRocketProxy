@@ -141,7 +141,7 @@ namespace TeamRocketProxy.Interception
             item.SubItems.Add(new ListViewItem.ListViewSubItem()
             {
                 Name = "Direction",
-                Text = Enum.GetName(typeof(MessageDirection), message.Direction)
+                Text = GetDirectionText(message.Direction)
             });
 
             item.SubItems.Add(new ListViewItem.ListViewSubItem()
@@ -151,6 +151,24 @@ namespace TeamRocketProxy.Interception
             });
 
             return item;
+        }
+
+        static string GetDirectionText(MessageDirection direction)
+        {
+            switch (direction)
+            {
+                case MessageDirection.None:
+                    return "---";
+
+                case MessageDirection.Inbound:
+                    return "In";
+
+                case MessageDirection.Outbound:
+                    return "Out";
+
+                default:
+                    return "???";
+            }
         }
 
         void DestroyContext()

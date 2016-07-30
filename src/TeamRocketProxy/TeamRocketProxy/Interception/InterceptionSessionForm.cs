@@ -81,7 +81,7 @@ namespace TeamRocketProxy.Interception
                 return null;
             }
 
-            if (text == searchTextBoxPlaceholderText && filterUserTextTextBox.ForeColor == searchTextBoxPlaceholderColor)
+            if (text == searchTextBoxPlaceholderText)
             {
                 return null;
             }

@@ -49,10 +49,10 @@ namespace PokemonGo
 
             foreach (var field in descriptor.Fields.InDeclarationOrder())
             {
-                var messageListExplorer = explorer.AddChildObject(field.Name);
-
                 if (field.FieldType == FieldType.Message && field.IsRepeated)
                 {
+                    var messageListExplorer = explorer.AddChildObject(field.Name);
+
                     var values = ((IEnumerable)field.Accessor.GetValue(message)).Cast<IMessage>().ToArray();
                     for (int i = 0; i < values.Length; i++)
                     {
@@ -61,9 +61,16 @@ namespace PokemonGo
                 }
                 else if (field.FieldType == FieldType.Message)
                 {
-                    var messageExplorer = explorer.AddChildObject(field.Name);
                     var messageValue = (IMessage)field.Accessor.GetValue(message);
-                    DescribeMessageRecursive(messageExplorer, messageValue);
+                    if (messageValue == null)
+                    {
+                        explorer.AddKeyValuePair(field.Name, GetClrType(field.FieldType), null);
+                    }
+                    else
+                    {
+                        var messageExplorer = explorer.AddChildObject(field.Name);
+                        DescribeMessageRecursive(messageExplorer, messageValue);
+                    }
                 }
                 else if (field.IsRepeated)
                 {

@@ -34,15 +34,15 @@
             System.Windows.Forms.SplitContainer splitContainer;
             System.Windows.Forms.GroupBox filterOptionsGroupBox;
             System.Windows.Forms.Label filterDirectionLabel;
-            this.filterDirectionAnyRadioButton = new System.Windows.Forms.RadioButton();
-            this.filterDirectionInRadioButton = new System.Windows.Forms.RadioButton();
-            this.filterDirectionOutRadioButton = new System.Windows.Forms.RadioButton();
-            this.filterUserTextTextBox = new System.Windows.Forms.TextBox();
             this.messagesListView = new System.Windows.Forms.ListView();
+            this.itemNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.messageIDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.directionColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.messageNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.itemNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.filterUserTextTextBox = new System.Windows.Forms.TextBox();
+            this.filterDirectionOutRadioButton = new System.Windows.Forms.RadioButton();
+            this.filterDirectionInRadioButton = new System.Windows.Forms.RadioButton();
+            this.filterDirectionAnyRadioButton = new System.Windows.Forms.RadioButton();
             this.messageExplorerTreeView = new System.Windows.Forms.TreeView();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,7 +79,7 @@
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitMenuItemClicked);
             // 
@@ -100,79 +100,6 @@
             splitContainer.Size = new System.Drawing.Size(904, 437);
             splitContainer.SplitterDistance = 301;
             splitContainer.TabIndex = 1;
-            // 
-            // filterOptionsGroupBox
-            // 
-            filterOptionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            filterOptionsGroupBox.Controls.Add(this.filterUserTextTextBox);
-            filterOptionsGroupBox.Controls.Add(this.filterDirectionOutRadioButton);
-            filterOptionsGroupBox.Controls.Add(this.filterDirectionInRadioButton);
-            filterOptionsGroupBox.Controls.Add(this.filterDirectionAnyRadioButton);
-            filterOptionsGroupBox.Controls.Add(filterDirectionLabel);
-            filterOptionsGroupBox.Location = new System.Drawing.Point(13, 4);
-            filterOptionsGroupBox.Name = "filterOptionsGroupBox";
-            filterOptionsGroupBox.Size = new System.Drawing.Size(285, 68);
-            filterOptionsGroupBox.TabIndex = 0;
-            filterOptionsGroupBox.TabStop = false;
-            filterOptionsGroupBox.Text = "Filter";
-            // 
-            // filterDirectionLabel
-            // 
-            filterDirectionLabel.AutoSize = true;
-            filterDirectionLabel.Location = new System.Drawing.Point(7, 21);
-            filterDirectionLabel.Name = "filterDirectionLabel";
-            filterDirectionLabel.Size = new System.Drawing.Size(52, 13);
-            filterDirectionLabel.TabIndex = 0;
-            filterDirectionLabel.Text = "Direction:";
-            // 
-            // filterDirectionAnyRadioButton
-            // 
-            this.filterDirectionAnyRadioButton.AutoSize = true;
-            this.filterDirectionAnyRadioButton.Location = new System.Drawing.Point(65, 19);
-            this.filterDirectionAnyRadioButton.Name = "filterDirectionAnyRadioButton";
-            this.filterDirectionAnyRadioButton.Size = new System.Drawing.Size(56, 17);
-            this.filterDirectionAnyRadioButton.TabIndex = 1;
-            this.filterDirectionAnyRadioButton.TabStop = true;
-            this.filterDirectionAnyRadioButton.Text = "In/Out";
-            this.filterDirectionAnyRadioButton.UseVisualStyleBackColor = true;
-            this.filterDirectionAnyRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
-            // 
-            // filterDirectionInRadioButton
-            // 
-            this.filterDirectionInRadioButton.AutoSize = true;
-            this.filterDirectionInRadioButton.Location = new System.Drawing.Point(128, 19);
-            this.filterDirectionInRadioButton.Name = "filterDirectionInRadioButton";
-            this.filterDirectionInRadioButton.Size = new System.Drawing.Size(34, 17);
-            this.filterDirectionInRadioButton.TabIndex = 2;
-            this.filterDirectionInRadioButton.TabStop = true;
-            this.filterDirectionInRadioButton.Text = "In";
-            this.filterDirectionInRadioButton.UseVisualStyleBackColor = true;
-            this.filterDirectionInRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
-            // 
-            // filterDirectionOutRadioButton
-            // 
-            this.filterDirectionOutRadioButton.AutoSize = true;
-            this.filterDirectionOutRadioButton.Location = new System.Drawing.Point(169, 19);
-            this.filterDirectionOutRadioButton.Name = "filterDirectionOutRadioButton";
-            this.filterDirectionOutRadioButton.Size = new System.Drawing.Size(42, 17);
-            this.filterDirectionOutRadioButton.TabIndex = 3;
-            this.filterDirectionOutRadioButton.TabStop = true;
-            this.filterDirectionOutRadioButton.Text = "Out";
-            this.filterDirectionOutRadioButton.UseVisualStyleBackColor = true;
-            this.filterDirectionOutRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
-            // 
-            // filterUserTextTextBox
-            // 
-            this.filterUserTextTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.filterUserTextTextBox.Location = new System.Drawing.Point(6, 42);
-            this.filterUserTextTextBox.Name = "filterUserTextTextBox";
-            this.filterUserTextTextBox.Size = new System.Drawing.Size(273, 20);
-            this.filterUserTextTextBox.TabIndex = 4;
-            this.filterUserTextTextBox.Text = "Search...";
-            this.filterUserTextTextBox.TextChanged += new System.EventHandler(this.OnFilterUserTextChanged);
-            this.filterUserTextTextBox.Enter += new System.EventHandler(this.OnFilterUserTextTextBoxEnter);
-            this.filterUserTextTextBox.Leave += new System.EventHandler(this.OnFilterUserTextTextBoxLeave);
             // 
             // messagesListView
             // 
@@ -195,6 +122,10 @@
             this.messagesListView.View = System.Windows.Forms.View.Details;
             this.messagesListView.SelectedIndexChanged += new System.EventHandler(this.OnMessagesListViewSelectedIndexChanged);
             // 
+            // itemNameColumnHeader
+            // 
+            this.itemNameColumnHeader.Width = 0;
+            // 
             // messageIDColumn
             // 
             this.messageIDColumn.Text = "#";
@@ -210,12 +141,84 @@
             this.messageNameColumnHeader.Text = "Message";
             this.messageNameColumnHeader.Width = 140;
             // 
-            // itemNameColumnHeader
+            // filterOptionsGroupBox
             // 
-            this.itemNameColumnHeader.Width = 0;
+            filterOptionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            filterOptionsGroupBox.Controls.Add(this.filterUserTextTextBox);
+            filterOptionsGroupBox.Controls.Add(this.filterDirectionOutRadioButton);
+            filterOptionsGroupBox.Controls.Add(this.filterDirectionInRadioButton);
+            filterOptionsGroupBox.Controls.Add(this.filterDirectionAnyRadioButton);
+            filterOptionsGroupBox.Controls.Add(filterDirectionLabel);
+            filterOptionsGroupBox.Location = new System.Drawing.Point(13, 4);
+            filterOptionsGroupBox.Name = "filterOptionsGroupBox";
+            filterOptionsGroupBox.Size = new System.Drawing.Size(285, 68);
+            filterOptionsGroupBox.TabIndex = 0;
+            filterOptionsGroupBox.TabStop = false;
+            filterOptionsGroupBox.Text = "Filter";
+            // 
+            // filterUserTextTextBox
+            // 
+            this.filterUserTextTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.filterUserTextTextBox.Location = new System.Drawing.Point(6, 42);
+            this.filterUserTextTextBox.Name = "filterUserTextTextBox";
+            this.filterUserTextTextBox.Size = new System.Drawing.Size(273, 20);
+            this.filterUserTextTextBox.TabIndex = 4;
+            this.filterUserTextTextBox.Text = "Search...";
+            this.filterUserTextTextBox.TextChanged += new System.EventHandler(this.OnFilterUserTextChanged);
+            this.filterUserTextTextBox.Enter += new System.EventHandler(this.OnFilterUserTextTextBoxEnter);
+            this.filterUserTextTextBox.Leave += new System.EventHandler(this.OnFilterUserTextTextBoxLeave);
+            // 
+            // filterDirectionOutRadioButton
+            // 
+            this.filterDirectionOutRadioButton.AutoSize = true;
+            this.filterDirectionOutRadioButton.Location = new System.Drawing.Point(169, 19);
+            this.filterDirectionOutRadioButton.Name = "filterDirectionOutRadioButton";
+            this.filterDirectionOutRadioButton.Size = new System.Drawing.Size(42, 17);
+            this.filterDirectionOutRadioButton.TabIndex = 3;
+            this.filterDirectionOutRadioButton.TabStop = true;
+            this.filterDirectionOutRadioButton.Text = "Out";
+            this.filterDirectionOutRadioButton.UseVisualStyleBackColor = true;
+            this.filterDirectionOutRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
+            // 
+            // filterDirectionInRadioButton
+            // 
+            this.filterDirectionInRadioButton.AutoSize = true;
+            this.filterDirectionInRadioButton.Location = new System.Drawing.Point(128, 19);
+            this.filterDirectionInRadioButton.Name = "filterDirectionInRadioButton";
+            this.filterDirectionInRadioButton.Size = new System.Drawing.Size(34, 17);
+            this.filterDirectionInRadioButton.TabIndex = 2;
+            this.filterDirectionInRadioButton.TabStop = true;
+            this.filterDirectionInRadioButton.Text = "In";
+            this.filterDirectionInRadioButton.UseVisualStyleBackColor = true;
+            this.filterDirectionInRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
+            // 
+            // filterDirectionAnyRadioButton
+            // 
+            this.filterDirectionAnyRadioButton.AutoSize = true;
+            this.filterDirectionAnyRadioButton.Location = new System.Drawing.Point(65, 19);
+            this.filterDirectionAnyRadioButton.Name = "filterDirectionAnyRadioButton";
+            this.filterDirectionAnyRadioButton.Size = new System.Drawing.Size(56, 17);
+            this.filterDirectionAnyRadioButton.TabIndex = 1;
+            this.filterDirectionAnyRadioButton.TabStop = true;
+            this.filterDirectionAnyRadioButton.Text = "In/Out";
+            this.filterDirectionAnyRadioButton.UseVisualStyleBackColor = true;
+            this.filterDirectionAnyRadioButton.CheckedChanged += new System.EventHandler(this.OnFilterRadioButtonCheckedChanged);
+            // 
+            // filterDirectionLabel
+            // 
+            filterDirectionLabel.AutoSize = true;
+            filterDirectionLabel.Location = new System.Drawing.Point(7, 21);
+            filterDirectionLabel.Name = "filterDirectionLabel";
+            filterDirectionLabel.Size = new System.Drawing.Size(52, 13);
+            filterDirectionLabel.TabIndex = 0;
+            filterDirectionLabel.Text = "Direction:";
             // 
             // messageExplorerTreeView
             // 
+            this.messageExplorerTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.messageExplorerTreeView.Location = new System.Drawing.Point(3, 3);
             this.messageExplorerTreeView.Name = "messageExplorerTreeView";
             this.messageExplorerTreeView.Size = new System.Drawing.Size(584, 422);

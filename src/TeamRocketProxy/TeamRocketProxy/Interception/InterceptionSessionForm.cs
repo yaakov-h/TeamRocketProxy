@@ -22,12 +22,15 @@ namespace TeamRocketProxy.Interception
 
             this.plugin = plugin;
 
+            var supportsLiveCapture = plugin.HasCapabilities(PluginCapabilities.SupportsLiveCapture);
+            startCaptureToolStripMenuItem.Enabled = supportsLiveCapture;
+            stopCaptureToolStripMenuItem.Enabled = false;
+
             var supportsPersistence = plugin.HasCapabilities(PluginCapabilities.SupportsSessionPersistence);
-            openToolStripMenuItem.Enabled = supportsPersistence;
-            saveToolStripMenuItem.Enabled = supportsPersistence;
+            exportMessagesToolStripMenuItem.Enabled = supportsPersistence;
+            importMessagesToolStripMenuItem.Enabled = supportsPersistence;
 
             LoadNewContext();
-            context.Initialize(); // TODO: Clean up for live capture flags
         }
 
         void LoadNewContext()
@@ -257,7 +260,7 @@ namespace TeamRocketProxy.Interception
         void OnFormClosed(object sender, FormClosedEventArgs e)
             => Application.Exit();
 
-        void OnOpenMenuItemClicked(object sender, EventArgs e)
+        void OnImportMenuItemClicked(object sender, EventArgs e)
         {
             var openDialog = new OpenFileDialog();
             openDialog.Multiselect = false;
@@ -270,8 +273,8 @@ namespace TeamRocketProxy.Interception
             }
 
         }
-
-        void OnSaveMenuItemClicked(object sender, EventArgs e)
+        
+        void OnExportMenuItemClicked(object sender, EventArgs e)
         {
             var saveDialog = new SaveFileDialog();
             var result = saveDialog.ShowDialog();
@@ -279,6 +282,20 @@ namespace TeamRocketProxy.Interception
             {
                 context.Save(saveDialog.FileName);
             }
+        }
+
+        void OnStartCaptureMenuItemClicked(object sender, EventArgs e)
+        {
+            startCaptureToolStripMenuItem.Enabled = false;
+            context.StartCapture();
+            stopCaptureToolStripMenuItem.Enabled = true;
+        }
+
+        void OnStopCaptureMenuItemClicked(object sender, EventArgs e)
+        {
+            stopCaptureToolStripMenuItem.Enabled = false;
+            context.StopCapture();
+            startCaptureToolStripMenuItem.Enabled = true;
         }
     }
 }

@@ -17,6 +17,14 @@ namespace PokemonGo
             messages = new List<IInterceptedMessage>();
             this.proxy = proxy;
             proxy.OnSessionComplete += OnProxySessionComplete;
+
+
+            var configuration = new HttpProxyConfiguration(15100);
+            configuration.AllowRemoteConnections = true;
+            configuration.DecryptSecureConnections = true;
+
+            configuration.InterceptHost("pgorelease.nianticlabs.com");
+            proxy.Configure(configuration);
         }
 
         readonly object messagesLock = new object();
@@ -27,16 +35,11 @@ namespace PokemonGo
         
         public event EventHandler<MessageInterceptionEventArgs> OnNewMessageIntercepted;
 
-        public void Initialize()
-        {
-            var configuration = new HttpProxyConfiguration(15100);
-            configuration.AllowRemoteConnections = true;
-            configuration.DecryptSecureConnections = true;
+        public void StartCapture()
+            => proxy.Start();
 
-            configuration.InterceptHost("pgorelease.nianticlabs.com");
-
-            proxy.Start(configuration);
-        }
+        public void StopCapture()
+            => proxy.Stop();
 
         public IEnumerable<IInterceptedMessage> GetMessages()
         {
@@ -112,7 +115,7 @@ namespace PokemonGo
         }
         
         public void Dispose()
-            => proxy?.Stop();
+            => StopCapture();
 
         static bool TryReadProtobuf<TProto>(Stream stream, out TProto proto)
             where TProto : IMessage, new()
@@ -153,8 +156,7 @@ namespace PokemonGo
             messageType = null;
             return false;
         }
-
-
+        
         static bool TryFindResponseMessageType(RequestType requestType, out Type messageType)
         {
             foreach (var type in typeof(RequestType).Assembly.GetTypes())

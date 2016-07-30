@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using Fiddler;
@@ -12,10 +13,16 @@ namespace TeamRocketProxy.Interception.Http
     {
         public FiddlerHttpProxy()
         {
+            FiddlerApplication.SetAppDisplayName("Team Rocket Proxy");
+
             FiddlerApplication.BeforeResponse += OnFiddlerResponseReceived;
             FiddlerApplication.AfterSessionComplete += OnFiddlerSessionComplete;
+
             FiddlerApplication.oTranscoders.ImportTranscoders("BasicFormatsForCore.dll");
             FiddlerApplication.Prefs.SetInt32Pref("fiddler.importexport.HTTPArchiveJSON.MaxTextBodyLength", OneHundredMBInBytes);
+
+            FiddlerApplication.Log.OnLogString += (s, e) => Debug.WriteLine(e.LogString);
+            FiddlerApplication.OnNotification += (s, e) => Debug.WriteLine(e.NotifyString);
 
             sessions = new List<Session>();
         }
@@ -29,7 +36,12 @@ namespace TeamRocketProxy.Interception.Http
 
         public event EventHandler<HttpSessionCompleteEventArgs> OnSessionComplete;
 
-        public void Start(HttpProxyConfiguration configuration)
+        public void Configure(HttpProxyConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
+        public void Start()
         {
             var flags = FiddlerCoreStartupFlags.None;
 
@@ -43,9 +55,6 @@ namespace TeamRocketProxy.Interception.Http
                 flags |= FiddlerCoreStartupFlags.AllowRemoteClients;
             }
 
-            FiddlerApplication.SetAppDisplayName("Team Rocket Proxy");
-            this.configuration = configuration;
-
             if (!InstallCertificate(Settings.Default))
             {
                 MessageBox.Show("Unable to create root SSL/TLS certificate for interception.", "Fiddler Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -56,9 +65,7 @@ namespace TeamRocketProxy.Interception.Http
         }
 
         public void Stop()
-        {
-            FiddlerApplication.Shutdown();
-        }
+            => FiddlerApplication.Shutdown();
 
         public void Load(string path)
         {
@@ -68,9 +75,12 @@ namespace TeamRocketProxy.Interception.Http
             };
             var sessions = FiddlerApplication.DoImport("HTTPArchive v1.2", false, options, null);
 
-            foreach(var session in sessions)
+            if (sessions != null)
             {
-                OnFiddlerSessionComplete(session);
+                foreach (var session in sessions)
+                {
+                    OnFiddlerSessionComplete(session);
+                }
             }
         }
 
@@ -105,7 +115,7 @@ namespace TeamRocketProxy.Interception.Http
 
         void OnFiddlerSessionComplete(Session oSession)
         {
-            if (!configuration.HostsToIntercept.Any(host => oSession.HostnameIs(host)))
+            if (configuration == null || !configuration.HostsToIntercept.Any(host => oSession.HostnameIs(host)))
             {
                 return;
             }

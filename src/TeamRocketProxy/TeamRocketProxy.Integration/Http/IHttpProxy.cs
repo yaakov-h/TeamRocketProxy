@@ -4,7 +4,9 @@ namespace TeamRocketProxy.Integration.Http
 {
     public interface IHttpProxy
     {
-        void Start(HttpProxyConfiguration configuration);
+        void Configure(HttpProxyConfiguration configuration);
+
+        void Start();
         void Stop();
 
         event EventHandler<HttpSessionCompleteEventArgs> OnSessionComplete;

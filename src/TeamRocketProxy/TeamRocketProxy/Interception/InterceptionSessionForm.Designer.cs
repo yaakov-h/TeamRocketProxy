@@ -34,6 +34,10 @@
             System.Windows.Forms.SplitContainer splitContainer;
             System.Windows.Forms.GroupBox filterOptionsGroupBox;
             System.Windows.Forms.Label filterDirectionLabel;
+            this.captureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportMessagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.messagesListView = new System.Windows.Forms.ListView();
             this.itemNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.messageIDColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,8 +48,8 @@
             this.filterDirectionInRadioButton = new System.Windows.Forms.RadioButton();
             this.filterDirectionAnyRadioButton = new System.Windows.Forms.RadioButton();
             this.messageExplorerTreeView = new System.Windows.Forms.TreeView();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopCaptureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,12 +77,44 @@
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
+            this.captureToolStripMenuItem,
+            this.importExportToolStripMenuItem,
             exitToolStripMenuItem});
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "&File";
+            // 
+            // captureToolStripMenuItem
+            // 
+            this.captureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startCaptureToolStripMenuItem,
+            this.stopCaptureToolStripMenuItem});
+            this.captureToolStripMenuItem.Name = "captureToolStripMenuItem";
+            this.captureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.captureToolStripMenuItem.Text = "&Capture";
+            // 
+            // importExportToolStripMenuItem
+            // 
+            this.importExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importMessagesToolStripMenuItem,
+            this.exportMessagesToolStripMenuItem});
+            this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
+            this.importExportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importExportToolStripMenuItem.Text = "&Import/Export";
+            // 
+            // importMessagesToolStripMenuItem
+            // 
+            this.importMessagesToolStripMenuItem.Name = "importMessagesToolStripMenuItem";
+            this.importMessagesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.importMessagesToolStripMenuItem.Text = "Import Messages...";
+            this.importMessagesToolStripMenuItem.Click += new System.EventHandler(this.OnImportMenuItemClicked);
+            // 
+            // exportMessagesToolStripMenuItem
+            // 
+            this.exportMessagesToolStripMenuItem.Name = "exportMessagesToolStripMenuItem";
+            this.exportMessagesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.exportMessagesToolStripMenuItem.Text = "Export Messages...";
+            this.exportMessagesToolStripMenuItem.Click += new System.EventHandler(this.OnExportMenuItemClicked);
             // 
             // exitToolStripMenuItem
             // 
@@ -228,19 +264,19 @@
             this.messageExplorerTreeView.Size = new System.Drawing.Size(584, 422);
             this.messageExplorerTreeView.TabIndex = 0;
             // 
-            // openToolStripMenuItem
+            // startCaptureToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "&Open...";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenMenuItemClicked);
+            this.startCaptureToolStripMenuItem.Name = "startCaptureToolStripMenuItem";
+            this.startCaptureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startCaptureToolStripMenuItem.Text = "&Start";
+            this.startCaptureToolStripMenuItem.Click += new System.EventHandler(this.OnStartCaptureMenuItemClicked);
             // 
-            // saveToolStripMenuItem
+            // stopCaptureToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "&Save...";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSaveMenuItemClicked);
+            this.stopCaptureToolStripMenuItem.Name = "stopCaptureToolStripMenuItem";
+            this.stopCaptureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stopCaptureToolStripMenuItem.Text = "S&top";
+            this.stopCaptureToolStripMenuItem.Click += new System.EventHandler(this.OnStopCaptureMenuItemClicked);
             // 
             // InterceptionSessionForm
             // 
@@ -279,7 +315,11 @@
         private System.Windows.Forms.TextBox filterUserTextTextBox;
         private System.Windows.Forms.ColumnHeader messageIDColumn;
         private System.Windows.Forms.TreeView messageExplorerTreeView;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem captureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importExportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importMessagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportMessagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startCaptureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopCaptureToolStripMenuItem;
     }
 }

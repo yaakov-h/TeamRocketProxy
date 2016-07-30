@@ -16,7 +16,6 @@ namespace TeamRocketProxy.Test.StubPlugins
 
             timer = new Timer(TimeSpan.FromSeconds(1).TotalMilliseconds);
             timer.Elapsed += OnTimerElapsed;
-            timer.Start();
         }
 
         readonly object messagesLock = new object();
@@ -27,10 +26,16 @@ namespace TeamRocketProxy.Test.StubPlugins
 
         public event EventHandler<MessageInterceptionEventArgs> OnNewMessageIntercepted;
 
-        public void Initialize()
+        public void StartCapture()
         {
+            timer.Start();
         }
-        
+
+        public void StopCapture()
+        {
+            timer.Stop();
+        }
+
         public void SetFilterOptions(FilterOptions options)
         {
             currentFilterOptions = options;

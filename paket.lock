@@ -1,0 +1,8 @@
+FRAMEWORK: NET45
+NUGET
+  remote: http://api.nuget.org/v3/index.json
+    Castle.Core (3.3.3)
+    Google.Protobuf (3.0.0-beta4)
+    Moq (4.5.16)
+      Castle.Core (>= 3.3.3)
+    NUnit (3.4.1)

@@ -1,0 +1,7 @@
+source https://api.nuget.org/v3/index.json
+
+framework net45
+
+nuget Google.Protobuf
+nuget NUnit
+nuget Moq

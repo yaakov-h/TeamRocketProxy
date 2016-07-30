@@ -12,6 +12,7 @@ namespace TeamRocketProxy.Interception
             InitializeComponent();
             SaveFilterUserTextTextBoxPlaceholderValues();
         }
+
         IRocketPlugin plugin;
         IInterceptionContext context;
 
@@ -161,7 +162,7 @@ namespace TeamRocketProxy.Interception
 
         static void RecursiveExpandNodes(TreeNode node, int threshold)
         {
-            if (node.Nodes.Count <= threshold)
+            if (node.Nodes.Count > 0 && node.Nodes.Count <= threshold)
             {
                 node.Expand();
             }

@@ -26,6 +26,10 @@ namespace TeamRocketProxy.Test.StubPlugins
         long messageCounter;
 
         public event EventHandler<MessageInterceptionEventArgs> OnNewMessageIntercepted;
+
+        public void Initialize()
+        {
+        }
         
         public void SetFilterOptions(FilterOptions options)
         {

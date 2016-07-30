@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03754FD9-9B2E-40F0-B0AC-8BC0252FC40B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PokemonGo</RootNamespace>
+    <AssemblyName>PokemonGo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\bin\Plugins\PokemonGo\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\bin\Plugins\PokemonGo\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Protobuf">
+      <HintPath>..\..\..\..\packages\Google.Protobuf\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TeamRocketProxy.Integration">
+      <HintPath>..\..\..\..\bin\TeamRocketProxy.Integration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Plugin\PokemonGoInterceptionContext.cs" />
+    <Compile Include="Plugin\PokemonGoPlugin.cs" />
+    <Compile Include="Plugin\InterceptedMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\AssetDigestEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleAction.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleActionType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleLog.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleParticipant.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattlePokemonInfo.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleResults.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleState.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Battle\BattleType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Capture\CaptureAward.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Capture\CaptureProbability.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\DownloadUrlEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Gym\GymMembership.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Gym\GymState.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Logs\ActionLogEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Logs\CatchPokemonLogEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Logs\FortSearchLogEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\PlayerBadge.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\PlayerData.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\ContactSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\Currency.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\DailyBonus.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\EquippedBadge.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\PlayerAvatar.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\PlayerCamera.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\PlayerCurrency.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\PlayerPublicProfile.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\Player\PlayerStats.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\PokedexEntry.cs" />
+    <Compile Include="Protobufs\POGOProtos\Data\PokemonData.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\ActivityType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\BadgeType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\CameraInterpolation.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\CameraTarget.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\Gender.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\IapItemCategory.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\ItemCategory.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\ItemEffect.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\Platform.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonFamilyId.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonId.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonMove.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonMovementType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonRarity.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\PokemonType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\TeamColor.cs" />
+    <Compile Include="Protobufs\POGOProtos\Enums\TutorialState.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\AppliedItem.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\AppliedItems.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\Candy.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\EggIncubator.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\EggIncubators.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\EggIncubatorType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryDelta.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryItem.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryItemData.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryUpgrade.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryUpgrades.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\InventoryUpgradeType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\Item\ItemAward.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\Item\ItemData.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\Item\ItemId.cs" />
+    <Compile Include="Protobufs\POGOProtos\Inventory\Item\ItemType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortData.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortLureInfo.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortModifier.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortRenderingType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortSponsor.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortSummary.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Fort\FortType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\MapCell.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\MapObjectsStatus.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Pokemon\MapPokemon.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Pokemon\NearbyPokemon.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\Pokemon\WildPokemon.cs" />
+    <Compile Include="Protobufs\POGOProtos\Map\SpawnPoint.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Envelopes\AuthTicket.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Envelopes\RequestEnvelope.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Envelopes\ResponseEnvelope.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Envelopes\Unknown6.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Envelopes\Unknown6Response.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\AddFortModifierMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\AttackGymMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\CatchPokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\CheckAwardedBadgesMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\CheckCodenameAvailableMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\ClaimCodenameMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\CollectDailyBonusMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\CollectDailyDefenderBonusMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\DiskEncounterMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\DownloadItemTemplatesMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\DownloadRemoteConfigVersionMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\DownloadSettingsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\EchoMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\EncounterMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\EncounterTutorialCompleteMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\EquipBadgeMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\EvolvePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\FortDeployPokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\FortDetailsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\FortRecallPokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\FortSearchMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetAssetDigestMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetDownloadUrlsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetGymDetailsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetHatchedEggsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetIncensePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetInventoryMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetMapObjectsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetPlayerMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetPlayerProfileMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\GetSuggestedCodenamesMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\IncenseEncounterMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\LevelUpRewardsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\MarkTutorialCompleteMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\NicknamePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\PlayerUpdateMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\RecycleInventoryItemMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\ReleasePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\SetAvatarMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\SetContactSettingsMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\SetFavoritePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\SetPlayerTeamMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\SfidaActionLogMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\StartGymBattleMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UpgradePokemonMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseIncenseMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemCaptureMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemEggIncubatorMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemGymMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemPotionMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemReviveMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Messages\UseItemXpBoostMessage.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\Request.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Requests\RequestType.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\AddFortModifierResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\AttackGymResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\CatchPokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\CheckAwardedBadgesResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\CheckCodenameAvailableResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\ClaimCodenameResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\CollectDailyBonusResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\CollectDailyDefenderBonusResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\DiskEncounterResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\DownloadItemTemplatesResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\DownloadRemoteConfigVersionResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\DownloadSettingsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\EchoResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\EncounterResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\EncounterTutorialCompleteResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\EquipBadgeResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\EvolvePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\FortDeployPokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\FortDetailsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\FortRecallPokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\FortSearchResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetAssetDigestResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetDownloadUrlsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetGymDetailsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetHatchedEggsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetIncensePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetInventoryResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetMapObjectsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetPlayerProfileResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetPlayerResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\GetSuggestedCodenamesResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\IncenseEncounterResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\LevelUpRewardsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\MarkTutorialCompleteResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\NicknamePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\PlayerUpdateResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\RecycleInventoryItemResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\ReleasePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\SetAvatarResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\SetContactSettingsResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\SetFavoritePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\SetPlayerTeamResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\SfidaActionLogResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\StartGymBattleResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UpgradePokemonResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseIncenseResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemCaptureResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemEggIncubatorResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemGymResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemPotionResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemReviveResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Networking\Responses\UseItemXpBoostResponse.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\DownloadSettingsAction.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\FortSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\GlobalSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\InventorySettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\LevelSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\MapSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\BadgeSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\CameraSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\EncounterSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\EquippedBadgeSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\GymBattleSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\GymLevelSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\IapItemDisplay.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\IapSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\ItemSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\BattleAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\EggIncubatorAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\ExperienceBoostAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\FoodAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\FortModifierAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\IncenseAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\InventoryUpgradeAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\PokeballAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\PotionAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Item\ReviveAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\MoveSequenceSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\MoveSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\PlayerLevelSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\PokemonSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\PokemonUpgradeSettings.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Pokemon\CameraAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Pokemon\EncounterAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\Pokemon\StatsAttributes.cs" />
+    <Compile Include="Protobufs\POGOProtos\Settings\Master\TypeEffectiveSettings.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -11,5 +11,7 @@ namespace TeamRocketProxy.Integration
         // For lists/collections
         void AddKeyValuePair(int index, Type valueType, object value);
         IMessageExplorer AddChildObject(int index, string key);
+
+        void AddError(string errorText);
     }
 }

@@ -22,5 +22,29 @@ namespace TeamRocketProxy.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FiddlerInterceptionCertificate {
+            get {
+                return ((string)(this["FiddlerInterceptionCertificate"]));
+            }
+            set {
+                this["FiddlerInterceptionCertificate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FiddlerInterceptionPrivateKey {
+            get {
+                return ((string)(this["FiddlerInterceptionPrivateKey"]));
+            }
+            set {
+                this["FiddlerInterceptionPrivateKey"] = value;
+            }
+        }
     }
 }

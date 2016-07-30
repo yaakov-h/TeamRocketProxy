@@ -5,6 +5,7 @@ namespace TeamRocketProxy.Integration
 {
     public interface IInterceptionContext : IDisposable
     {
+        void Initialize();
         void SetFilterOptions(FilterOptions options);
 
         IEnumerable<IInterceptedMessage> GetMessages();

@@ -40,6 +40,12 @@ namespace TeamRocketProxy.Interception
             return new TreeViewMessageExplorer(node);
         }
 
+        void IMessageExplorer.AddError(string errorText)
+        {
+            var node = new TreeNode(errorText);
+            this.node.Nodes.Add(node);
+        }
+
         static string FormatObject(Type valueType, object value)
         {
             string text;

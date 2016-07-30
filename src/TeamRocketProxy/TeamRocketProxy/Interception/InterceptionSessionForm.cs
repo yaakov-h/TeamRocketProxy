@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TeamRocketProxy.Integration;
 
@@ -28,6 +22,7 @@ namespace TeamRocketProxy.Interception
             this.plugin = plugin;
             context = plugin.GetInterceptionContext(new InterceptionServiceProvider());
             context.OnNewMessageIntercepted += OnNewMessageIntercepted;
+            context.Initialize();
         }
 
         void OnExitMenuItemClicked(object sender, EventArgs e)

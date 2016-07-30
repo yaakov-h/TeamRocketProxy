@@ -2,6 +2,8 @@ source https://api.nuget.org/v3/index.json
 
 framework net45
 
+nuget FiddlerCore
 nuget Google.Protobuf
+nuget Google.Protobuf.Tools
 nuget NUnit
 nuget Moq
